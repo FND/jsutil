@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
 	module("flattenJSON");
 
-	test("nested objects", function() {
+	test("simple objects", function() {
 		var actual, expected;
 
 		var obj = {
@@ -31,5 +31,35 @@ jQuery(document).ready(function() {
 		actual = flattenJSON(obj)["lvl.two"];
 		expected = "bravo";
 		same(actual, expected, "uses dot as prefix delimiter");
+	});
+
+	test("complex objects", function() {
+		var actual, expected;
+
+		var obj = {
+			foo: "lorem",
+			bar: "ipsum",
+			alpha: {
+				a1: "item A1",
+				bravo: {
+					b1: "item B1",
+					b2: "item B2"
+				},
+				a2: "item A2"
+			},
+			baz: "dolor"
+		};
+
+		actual = flattenJSON(obj);
+		expected = {
+			foo: "lorem",
+			bar: "ipsum",
+			"alpha.a1": "item A1",
+			"alpha.a2": "item A2",
+			"alpha.bravo.b1": "item B1",
+			"alpha.bravo.b2": "item B2",
+			baz: "dolor"
+		};
+		same(actual, expected, "supports multiple levels of nesting");
 	});
 });
