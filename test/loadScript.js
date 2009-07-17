@@ -13,12 +13,12 @@ jQuery(document).ready(function() {
 		src = "fixtures/dummy.js";
 		loadScript(src);
 		stop();
-		var async = function() {
+		var deferred = function() {
 			actual = dummy.version;
 			expected = "0.1.0";
 			same(actual, expected, "provides access to source file's objects");
 			start();
 		};
-		setTimeout(async, 10); // XXX: necessary delay might be platform-dependent
+		setTimeout(deferred, 10); // XXX: necessary delay might be platform-dependent
 	});
 });
