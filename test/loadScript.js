@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
 		loadScript(src);
 		actual = jQuery("script:last").attr("src");
 		expected = src;
-		same(actual, expected, "adds SCRIPT element to DOM");
+		deepEqual(actual, expected, "adds SCRIPT element to DOM");
 
 		src = "fixtures/dummy.js";
 		loadScript(src);
@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
 		var deferred = function() {
 			actual = dummy.version;
 			expected = "0.1.0";
-			same(actual, expected, "provides access to source file's objects");
+			deepEqual(actual, expected, "provides access to source file's objects");
 			start();
 		};
 		setTimeout(deferred, 10); // XXX: necessary delay might be platform-dependent

@@ -22,15 +22,15 @@ jQuery(document).ready(function() {
 			"lvl.two": "bravo",
 			baz: "dolor"
 		};
-		same(actual, expected, "moves nested object properties to root level");
+		deepEqual(actual, expected, "moves nested object properties to root level");
 
 		actual = flattenJSON(obj)["lvl.one"];
 		expected = "alpha";
-		same(actual, expected, "uses nested object's name as prefix");
+		deepEqual(actual, expected, "uses nested object's name as prefix");
 
 		actual = flattenJSON(obj)["lvl.two"];
 		expected = "bravo";
-		same(actual, expected, "uses dot as prefix delimiter");
+		deepEqual(actual, expected, "uses dot as prefix delimiter");
 	});
 
 	test("complex objects", function() {
@@ -60,6 +60,6 @@ jQuery(document).ready(function() {
 			"alpha.bravo.b2": "item B2",
 			baz: "dolor"
 		};
-		same(actual, expected, "supports multiple levels of nesting");
+		deepEqual(actual, expected, "supports multiple levels of nesting");
 	});
 });
